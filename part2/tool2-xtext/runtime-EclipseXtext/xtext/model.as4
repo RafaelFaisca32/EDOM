@@ -1,0 +1,9 @@
+Model "Amazon" {
+	subject Subject "Product" {
+		userFeedback {
+			Review "Review1" {
+				reviewType ONLYGRADE
+			}
+		}
+	}
+}

@@ -1,0 +1,104 @@
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
+@namespace(uri="http://www.example.org/assignment1", prefix="assignment1")
+package assignment1;
+
+
+@Ecore(constraints="mustHaveName mustHaveVersion")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(mustHaveName="not self.name.oclIsUndefined()", mustHaveVersion="not self.version.oclIsUndefined()")
+@gmf.node(label="name")
+class Project {
+	@gmf.compartment
+	val Target[+] target;
+	attr String name;
+	attr String version;
+	@gmf.compartment
+	val Task[+] tasks;
+}
+
+@Ecore(constraints="nameMustStartWithUppercase")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(nameMustStartWithUppercase="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0")
+@gmf.node(label="name")
+class Target {
+	@gmf.compartment
+	val Task[1] has;
+	@gmf.compartment
+	val File[1] output;
+	ref Target[*] dependencies;
+	@gmf.compartment
+	val File[1] input;
+	attr String name;
+}
+
+@Ecore(constraints="mustHaveName nameMustBeUnique nameMustStartWithUppercase")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(mustHaveName="not self.name.oclIsUndefined()", nameMustBeUnique="Task.allInstances()->isUnique(e | e.name)", nameMustStartWithUppercase="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0")
+@gmf.node(label="name")
+class Task {
+	attr String name;
+	attr String description;
+	@gmf.compartment
+	val Property[*] has;
+	@gmf.compartment
+	val Action[*] actions;
+	ref Task[*] depends;
+}
+
+@Ecore(constraints="mustHaveName")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(mustHaveName="not self.name.oclIsUndefined()")
+@gmf.node(label="name")
+class File {
+	attr String name;
+}
+
+@Ecore(constraints="mustHaveName mustHaveValue nameMustBeUnique")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(mustHaveName="not self.name.oclIsUndefined()", mustHaveValue="not self.value.oclIsUndefined()", nameMustBeUnique="Property.allInstances()->isUnique(e | e.name)")
+@gmf.node(label="name")
+class Property {
+	attr String name;
+	attr String value;
+}
+
+@gmf.node(label="name")
+class Action {
+	attr String name;
+	@gmf.compartment
+	val Decision[*] decisions;
+}
+
+
+class InstructionBlock extends Action {
+	@gmf.compartment
+	val Instruction[+] has;
+}
+
+@gmf.node(label="name")
+class Instruction {
+	attr String name;
+}
+
+
+class Decision {
+	@gmf.compartment
+	val Property[*] has;
+	@gmf.compartment
+	val Condition[+] condition;
+}
+
+@gmf.node(label="value")
+class Condition {
+	attr String value;
+}
+
+class Start extends Action {
+	ref Action next;
+}
+
+class End extends Action {
+}
+
+@gmf.diagram(diagram.extension="Project")
+class Model {
+	@gmf.compartment
+	val Project[1] project;
+	attr String name;
+}
+

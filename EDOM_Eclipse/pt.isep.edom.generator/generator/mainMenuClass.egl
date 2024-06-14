@@ -1,0 +1,106 @@
+	package prototype1;
+		
+	public class MainMenu {
+		
+		public static Project createProject() {
+			
+			List<Target> targetList = new ArrayList<>();
+			List<Task> taskList = new ArrayList<>();
+			[% for (i in Sequence{1 .. theModel.project.target.size() }) {%]
+				String name[%=i%] = "[%=theModel.project.target.at(i-1).name%]";
+				File input[%=i%] = new File("[%=theModel.project.target.at(i-1).input.name%]");
+				File output[%=i%] = new File("[%=theModel.project.target.get(i-1).output.name%]");
+				List<Property> propertyList[%=i%] = new ArrayList<>();
+				List<Action> actionList[%=i%] = new ArrayList<>();
+				[% for (j in Sequence{1 .. theModel.project.target.at(i-1).has.has.size() }) { %]
+						Property property[%=theModel.project.target.at(i-1).name.firstToUpperCase().replace("\\s","")%][%=j%] = new Property("[%=theModel.project.target.at(i-1).has.has.at(j-1).name%]","[%=theModel.project.target.at(i-1).has.has.at(j-1).value%]");
+						propertyList[%=i%].add(property[%=theModel.project.target.at(i-1).name.firstToUpperCase().replace("\\s","")%][%=j%]);
+				[% } %]
+				[% for (j in Sequence{1 .. theModel.project.target.at(i-1).has.actions.size() }) { %]
+					[% if (j < theModel.project.target.at(i-1).has.actions.size()) { %]
+						List<Decision> decisionList[%=i%] = new ArrayList<>();	
+						[% for (k in Sequence{1 .. theModel.project.target.at(i-1).has.actions.at(j-1).decisions.size() }) { %]
+							List<Property> propertyListDecision[%=j%] = new ArrayList<>();
+							[% for (a in Sequence{1 .. theModel.project.target.at(i-1).has.actions.at(j-1).decisions.at(k-1).has.size() }) { %]
+								Property propertyDecision[%=a%] = new Property("[%=theModel.project.target.at(i-1).has.actions.at(j-1).decisions.at(k-1).has.at(a-1).name%]","[%=theModel.project.target.at(i-1).has.actions.at(j-1).decisions.at(k-1).has.at(a-1).value%]");
+								propertyListDecision[%=j%].add(propertyDecision[%=a%]);
+							[% } %]
+							List<Condition> conditionListDecision[%=j%] = new ArrayList<>();
+							[% for (a in Sequence{1 .. theModel.project.target.at(i-1).has.actions.at(j-1).decisions.at(k-1).condition.size() }) { %]
+								Condition conditionDecision[%=a%] = new Condition("[%=theModel.project.target.at(i-1).has.actions.at(j-1).decisions.at(k-1).condition.at(a-1).value%]");
+								conditionListDecision[%=j%].add(conditionDecision[%=a%]);
+							[% } %]
+							Decision decision[%=k%] = new Decision(propertyListDecision[%=j%],conditionListDecision[%=j%]);
+							decisionList[%=i%].add(decision[%=k%]);
+						[% } %]
+						Action action[%=j%] = new Action("[%=theModel.project.target.at(i).has.actions.at(j).name%]",decisionList[%=i%]);
+						actionList[%=i%].add(action[%=j%]);
+					[% } %]
+				[% } %]
+				[% if (theModel.project.target.at(0).has.actions.isUndefined()) { %]
+					Task task[%=i%] = new Task("[%=theModel.project.target.at(i-1).has.name%]","[%=theModel.project.target.at(i-1).has.description%]",propertyList[%=i%],actionList[%=i%],null);
+				[% } %]
+				Task task[%=i%] = new Task("[%=theModel.project.target.at(i-1).has.name%]","[%=theModel.project.target.at(i-1).has.description%]",propertyList[%=i%],null,null);
+				Target target[%=i%] = new Target(name[%=i%],input[%=i%],output[%=i%],task[%=i%],null);
+				targetList.add(target[%=i%]);
+			[% } %]
+			[% for (i in Sequence{1 .. theModel.project.tasks.size() }) { %]
+				List<Property> propertyTaskList[%=i%] = new ArrayList<>();
+				List<Action> actionTaskList[%=i%] = new ArrayList<>();
+				[% for (j in Sequence{1 .. theModel.project.tasks.at(i-1).has.size() }) { %]
+					Property property[%=theModel.project.tasks.at(i-1).name.firstToUpperCase()%][%=j%] = new Property("[%=theModel.project.tasks.at(i-1).has.at(j-1).name%]","[%=theModel.project.tasks.at(i-1).has.at(j-1).value%]");
+					propertyTaskList[%=i%].add(property[%=theModel.project.tasks.at(i-1).name.firstToUpperCase()%][%=j%]);
+				[% } %]
+				[%  for (j in Sequence{1 .. theModel.project.tasks.at(i-1).actions.size() }) { %]
+					List<Decision> decisionTaskList[%=i%] = new ArrayList<>();
+					[% for (k in Sequence{1 .. theModel.project.tasks.at(i-1).actions.at(j-1).decisions.size() }) { %]
+						List<Property> propertyTaskListDecision[%=j%] = new ArrayList<>();
+						[% for (a in Sequence{1 .. theModel.project.tasks.at(i-1).actions.at(j-1).decisions.at(k-1).has.size() }) { %]
+							Property propertyTaskDecision[%=a%] = new Property("[%=theModel.project.tasks.at(i-1).actions.at(j-1).decisions.get(k-1).has.at(a-1).name%]","[%=theModel.project.tasks.at(i-1).actions.at(j-1).decisions.at(k-1).has.at(a-1).value%]");
+							propertyTaskListDecision[%=j%].add(propertyTaskDecision[%=a%]);
+						[% } %]
+						List<Condition> conditionTaskListDecision[%=j%] = new ArrayList<>();
+						[% for (a in Sequence{1 .. theModel.project.tasks.at(i-1).actions.at(j-1).decisions.at(k-1).condition.size() }) { %]
+							Condition conditionTaskDecision[%=a%] = new Condition("[%=theModel.project.tasks.at(i-1).actions.at(j-1).decisions.at(k-1).condition.at(a-1).value%]");
+							conditionTaskListDecision[%=j%].add(conditionTaskDecision[%=a%]);
+						[% } %]
+						Decision decisionTask[%=k%] = new Decision(propertyTaskListDecision[%=j%],conditionTaskListDecision[%=j%]);
+						decisionTaskList[%=i%].add(decisionTask[%=k%]);
+					[% } %]
+					Action actionTask[%=j%] = new Action("[%=theModel.project.tasks.at(i-1).actions.at(j-1).name%]",decisionTaskList[%=i%]);
+					actionTaskList[%=i%].add(actionTask[%=j%]);
+				[% } %]
+				Task taskTask[%=i%] = new Task("[%=theModel.project.tasks.at(i-1).name%]","[%=theModel.project.tasks.at(i-1).description%]",propertyTaskList[%=i%],actionTaskList[%=i%],null);
+				taskList.add(taskTask[%=i%]);
+			[% } %]
+			Project project = new Project("[%=theModel.project.name%]","[%=theModel.project.version%]",targetList,taskList);
+			return project;
+		}
+			
+		public static void executeMenu(Project project) {
+			
+			boolean exit = false;
+			Scanner input = new Scanner(System.in);
+			
+			while (!exit) {
+
+				System.out.println(" # [%=theModel.project.name.firstToUpperCase()%] ");
+				System.out.println(" Please select one option:");
+						
+				System.out.println("0 - Exit");
+				System.out.println("1 - Execute Tasks");
+						
+				String line = input.nextLine();
+				int num = Integer.valueOf(line);
+						
+				switch (num) {
+					case 0:
+						exit = true;
+						break;
+					case 1:
+						TaskMenu.executeMenu(project);
+						break;
+				}
+			}
+		}
+	}

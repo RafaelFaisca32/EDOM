@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/isep.assignment2.cr2/src-gen" creationIcons="false"
+    editDirectory="/isep.assignment2.cr2.edit/src-gen" editorDirectory="/isep.assignment2.cr2.editor/src-gen"
+    modelPluginID="isep.assignment2.cr2" modelName="Cr2" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>cr2.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Cr2" basePackage="isep.assignment2" disposableProviderFactory="true"
+      ecorePackage="cr2.ecore#/">
+    <genClasses ecoreClass="cr2.ecore#//Project">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Project/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Project/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Project/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Project/tasks"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//Target">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Target/has"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Target/output"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cr2.ecore#//Target/dependencies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Target/input"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Target/name"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Task/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Task/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Task/has"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Task/actions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cr2.ecore#//Task/depends"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//File">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//File/name"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Property/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Property/value"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//Action">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Action/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Action/decisions"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//InstructionBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//InstructionBlock/has"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//Instruction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Instruction/name"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//Decision">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Decision/has"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Decision/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//Condition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Condition/value"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//Start">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cr2.ecore#//Start/next"/>
+    </genClasses>
+    <genClasses ecoreClass="cr2.ecore#//End"/>
+    <genClasses ecoreClass="cr2.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cr2.ecore#//Model/project"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cr2.ecore#//Model/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

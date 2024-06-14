@@ -1,0 +1,16 @@
+Model "Amazon" {
+	subject Subject "Ola" {
+		userFeedback { 
+			reply moderation Comment "Ola" {
+				moderationProcess ModerationProcess "moderation" {
+					startStep "start" step {
+ 						End "Fim" 					
+					}
+				}
+			}
+		}
+		feature {
+			Feature "Feature"
+		}
+	}
+}

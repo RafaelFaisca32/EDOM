@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cr2="http://www.example.org/cr2" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_Fik94F3sEe2hKrKqA1Uy3Q" selectedViews="__ZK6MF3sEe2hKrKqA1Uy3Q" version="15.0.0.202201261500">
+    <semanticResources>Java.cr2</semanticResources>
+    <semanticResources>testSirius.cr2</semanticResources>
+    <semanticResources>C.cr2</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="__ZK6MF3sEe2hKrKqA1Uy3Q">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__mF74F3sEe2hKrKqA1Uy3Q" name="new DiagramOfProject" repPath="#__l8x8F3sEe2hKrKqA1Uy3Q" changeId="5a6fc6ae-4303-46ca-8369-2928e18799d8">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']"/>
+        <target xmi:type="cr2:Model" href="testSirius.cr2#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jmRHEF4EEe2DLeSeNp3FlQ" name="new DiagramOfProject" repPath="#_jmP48F4EEe2DLeSeNp3FlQ" changeId="3b37d7bf-3242-44d3-a237-521f3f4d3c1e">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']"/>
+        <target xmi:type="cr2:Model" href="Java.cr2#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LUUpUl4IEe2DLeSeNp3FlQ" name="new DiagramOfProject" repPath="#_LUUpUF4IEe2DLeSeNp3FlQ" changeId="f900c29c-53ca-4a12-9ba8-9462b0ac294a">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']"/>
+        <target xmi:type="cr2:Model" href="C.cr2#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="__l8x8F3sEe2hKrKqA1Uy3Q">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="__mT-UF3sEe2hKrKqA1Uy3Q" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="__mUlYF3sEe2hKrKqA1Uy3Q" type="Sirius" element="__l8x8F3sEe2hKrKqA1Uy3Q" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="__mkdAF3sEe2hKrKqA1Uy3Q" type="2003" element="__mb6IF3sEe2hKrKqA1Uy3Q">
+          <children xmi:type="notation:Node" xmi:id="__muOAF3sEe2hKrKqA1Uy3Q" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="__mu1EF3sEe2hKrKqA1Uy3Q" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="__mu1EV3sEe2hKrKqA1Uy3Q"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="__mu1El3sEe2hKrKqA1Uy3Q"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="__mkdAV3sEe2hKrKqA1Uy3Q" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="__mkdAl3sEe2hKrKqA1Uy3Q" width="171" height="117"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="__mUlYV3sEe2hKrKqA1Uy3Q"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="__min0F3sEe2hKrKqA1Uy3Q" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="__min0V3sEe2hKrKqA1Uy3Q"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="__mb6IF3sEe2hKrKqA1Uy3Q" name="AA">
+      <target xmi:type="cr2:Project" href="testSirius.cr2#//@project"/>
+      <semanticElements xmi:type="cr2:Project" href="testSirius.cr2#//@project"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="__me9cF3sEe2hKrKqA1Uy3Q" labelSize="12" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="__mC4kF3sEe2hKrKqA1Uy3Q"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer"/>
+    <target xmi:type="cr2:Model" href="testSirius.cr2#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_jmP48F4EEe2DLeSeNp3FlQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_jmYb0F4EEe2DLeSeNp3FlQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_jmYb0V4EEe2DLeSeNp3FlQ" type="Sirius" element="_jmP48F4EEe2DLeSeNp3FlQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_jmctQF4EEe2DLeSeNp3FlQ" type="2003" element="_jmZC4F4EEe2DLeSeNp3FlQ">
+          <children xmi:type="notation:Node" xmi:id="_jmkCAF4EEe2DLeSeNp3FlQ" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_jmkpEF4EEe2DLeSeNp3FlQ" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_jmkpE14EEe2DLeSeNp3FlQ" type="3010" element="_jmaRAF4EEe2DLeSeNp3FlQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_jmkpFF4EEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_jmkpFV4EEe2DLeSeNp3FlQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jmlQIF4EEe2DLeSeNp3FlQ" type="3010" element="_jmbfIV4EEe2DLeSeNp3FlQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_jmlQIV4EEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_jmlQIl4EEe2DLeSeNp3FlQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jmlQI14EEe2DLeSeNp3FlQ" type="3010" element="_jmbfI14EEe2DLeSeNp3FlQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_jmlQJF4EEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_jmlQJV4EEe2DLeSeNp3FlQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jmlQJl4EEe2DLeSeNp3FlQ" type="3010" element="_jmcGMF4EEe2DLeSeNp3FlQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_jmlQJ14EEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_jmlQKF4EEe2DLeSeNp3FlQ"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_jmkpEV4EEe2DLeSeNp3FlQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_jmkpEl4EEe2DLeSeNp3FlQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_jmctQV4EEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jmctQl4EEe2DLeSeNp3FlQ" height="195"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_jmYb0l4EEe2DLeSeNp3FlQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_jmcGMl4EEe2DLeSeNp3FlQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_jmcGM14EEe2DLeSeNp3FlQ"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_jmZC4F4EEe2DLeSeNp3FlQ" name="JavaBuilder">
+      <target xmi:type="cr2:Project" href="Java.cr2#//@project"/>
+      <semanticElements xmi:type="cr2:Project" href="Java.cr2#//@project"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_jmZC4V4EEe2DLeSeNp3FlQ" labelSize="12" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_jmaRAF4EEe2DLeSeNp3FlQ" name="org.eclipse.emf.ecore.impl.EClassImpl@2d2685da (name: Target) (instanceClassName: null) (abstract: false, interface: false)">
+        <target xmi:type="cr2:Target" href="Java.cr2#//@project/@target.0"/>
+        <semanticElements xmi:type="cr2:Target" href="Java.cr2#//@project/@target.0"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_jmbfIF4EEe2DLeSeNp3FlQ" labelSize="12" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_jmbfIV4EEe2DLeSeNp3FlQ" name="org.eclipse.emf.ecore.impl.EClassImpl@2d2685da (name: Target) (instanceClassName: null) (abstract: false, interface: false)">
+        <target xmi:type="cr2:Target" href="Java.cr2#//@project/@target.1"/>
+        <semanticElements xmi:type="cr2:Target" href="Java.cr2#//@project/@target.1"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_jmbfIl4EEe2DLeSeNp3FlQ" labelSize="12" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_jmbfI14EEe2DLeSeNp3FlQ" name="org.eclipse.emf.ecore.impl.EClassImpl@2d2685da (name: Target) (instanceClassName: null) (abstract: false, interface: false)">
+        <target xmi:type="cr2:Target" href="Java.cr2#//@project/@target.2"/>
+        <semanticElements xmi:type="cr2:Target" href="Java.cr2#//@project/@target.2"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_jmbfJF4EEe2DLeSeNp3FlQ" labelSize="12" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_jmcGMF4EEe2DLeSeNp3FlQ" name="delete files">
+        <target xmi:type="cr2:Task" href="Java.cr2#//@project/@tasks.0"/>
+        <semanticElements xmi:type="cr2:Task" href="Java.cr2#//@project/@tasks.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_jmcGMV4EEe2DLeSeNp3FlQ" labelSize="12" labelPosition="node">
+          <description xmi:type="style:DotDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTask']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTask']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_jmQgAF4EEe2DLeSeNp3FlQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer"/>
+    <target xmi:type="cr2:Model" href="Java.cr2#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_LUUpUF4IEe2DLeSeNp3FlQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_LUV3cF4IEe2DLeSeNp3FlQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_LUV3cV4IEe2DLeSeNp3FlQ" type="Sirius" element="_LUUpUF4IEe2DLeSeNp3FlQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_LUXsol4IEe2DLeSeNp3FlQ" type="2003" element="_LUWegF4IEe2DLeSeNp3FlQ">
+          <children xmi:type="notation:Node" xmi:id="_LUYTsF4IEe2DLeSeNp3FlQ" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_LUYTsV4IEe2DLeSeNp3FlQ" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_LUYTtF4IEe2DLeSeNp3FlQ" type="3010" element="_LUWeg14IEe2DLeSeNp3FlQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_LUYTtV4IEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_LUYTtl4IEe2DLeSeNp3FlQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_LUYTt14IEe2DLeSeNp3FlQ" type="3010" element="_LUXFkV4IEe2DLeSeNp3FlQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_LUYTuF4IEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_LUYTuV4IEe2DLeSeNp3FlQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_LUY6wF4IEe2DLeSeNp3FlQ" type="3010" element="_LUXFk14IEe2DLeSeNp3FlQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_LUY6wV4IEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_LUY6wl4IEe2DLeSeNp3FlQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_LUY6w14IEe2DLeSeNp3FlQ" type="3010" element="_LUXFlV4IEe2DLeSeNp3FlQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_LUY6xF4IEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_LUY6xV4IEe2DLeSeNp3FlQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_LUY6xl4IEe2DLeSeNp3FlQ" type="3010" element="_LUXFl14IEe2DLeSeNp3FlQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_LUY6x14IEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_LUY6yF4IEe2DLeSeNp3FlQ"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_LUYTsl4IEe2DLeSeNp3FlQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_LUYTs14IEe2DLeSeNp3FlQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_LUXso14IEe2DLeSeNp3FlQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LUXspF4IEe2DLeSeNp3FlQ" height="279"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_LUV3cl4IEe2DLeSeNp3FlQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_LUXsoF4IEe2DLeSeNp3FlQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_LUXsoV4IEe2DLeSeNp3FlQ"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_LUWegF4IEe2DLeSeNp3FlQ" name="CBuilder">
+      <target xmi:type="cr2:Project" href="C.cr2#//@project"/>
+      <semanticElements xmi:type="cr2:Project" href="C.cr2#//@project"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_LUWegV4IEe2DLeSeNp3FlQ" labelSize="12" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_LUWeg14IEe2DLeSeNp3FlQ" name="org.eclipse.emf.ecore.impl.EClassImpl@2d2685da (name: Target) (instanceClassName: null) (abstract: false, interface: false)">
+        <target xmi:type="cr2:Target" href="C.cr2#//@project/@target.0"/>
+        <semanticElements xmi:type="cr2:Target" href="C.cr2#//@project/@target.0"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_LUXFkF4IEe2DLeSeNp3FlQ" labelSize="12" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_LUXFkV4IEe2DLeSeNp3FlQ" name="org.eclipse.emf.ecore.impl.EClassImpl@2d2685da (name: Target) (instanceClassName: null) (abstract: false, interface: false)">
+        <target xmi:type="cr2:Target" href="C.cr2#//@project/@target.1"/>
+        <semanticElements xmi:type="cr2:Target" href="C.cr2#//@project/@target.1"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_LUXFkl4IEe2DLeSeNp3FlQ" labelSize="12" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_LUXFk14IEe2DLeSeNp3FlQ" name="org.eclipse.emf.ecore.impl.EClassImpl@2d2685da (name: Target) (instanceClassName: null) (abstract: false, interface: false)">
+        <target xmi:type="cr2:Target" href="C.cr2#//@project/@target.2"/>
+        <semanticElements xmi:type="cr2:Target" href="C.cr2#//@project/@target.2"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_LUXFlF4IEe2DLeSeNp3FlQ" labelSize="12" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_LUXFlV4IEe2DLeSeNp3FlQ" name="org.eclipse.emf.ecore.impl.EClassImpl@2d2685da (name: Target) (instanceClassName: null) (abstract: false, interface: false)">
+        <target xmi:type="cr2:Target" href="C.cr2#//@project/@target.3"/>
+        <semanticElements xmi:type="cr2:Target" href="C.cr2#//@project/@target.3"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_LUXFll4IEe2DLeSeNp3FlQ" labelSize="12" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_LUXFl14IEe2DLeSeNp3FlQ" name="deleteFiles">
+        <target xmi:type="cr2:Task" href="C.cr2#//@project/@tasks.0"/>
+        <semanticElements xmi:type="cr2:Task" href="C.cr2#//@project/@tasks.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_LUXFmF4IEe2DLeSeNp3FlQ" labelSize="12" labelPosition="node">
+          <description xmi:type="style:DotDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTask']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTask']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_LUUpUV4IEe2DLeSeNp3FlQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/my.project.design.sirius/description/sirius.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer"/>
+    <target xmi:type="cr2:Model" href="C.cr2#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

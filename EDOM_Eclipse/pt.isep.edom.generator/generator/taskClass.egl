@@ -1,0 +1,58 @@
+package prototype1.domain;
+		
+public class [%=task.type.name%] {
+			
+	private String name;
+	private String description;
+	private List<[%=task.has.at(0).type.name%]> [%=task.has.at(0).type.name.firstToLowerCase()%];
+	private List<[%=theModel.project.tasks.at(0).actions.at(0).type.name%]> [%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToLowerCase()%];
+	private List<[%=task.type.name%]> [%=task.type.name.firstToLowerCase()%];
+		
+	public [%=task.type.name%](String name,String description,List<[%=task.has.at(0).type.name%]> [%=task.has.at(0).type.name.firstToLowerCase()%],List<[%=theModel.project.tasks.at(0).actions.at(0).type.name%]> [%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToLowerCase()%],List<[%=task.type.name%]> [%=task.type.name.firstToLowerCase()%]){
+		this.name = name;
+		this.description = description;
+		this.[%=task.has.at(0).type.name.firstToLowerCase()%] = [%=task.has.at(0).type.name.firstToLowerCase()%];
+		this.[%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToLowerCase()%] = [%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToLowerCase()%];
+		this.[%=task.type.name.firstToLowerCase()%] = [%=task.type.name.firstToLowerCase()%];
+	}
+			
+	public List<[%=theModel.project.tasks.at(0).actions.at(0).type.name%]> get[%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToUpperCase()%](){
+		return [%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToLowerCase()%];
+	}
+				
+	public List<[%=task.has.at(0).type.name%]> get[%=task.has.at(0).type.name.firstToUpperCase()%](){
+		return [%=task.has.at(0).type.name.firstToLowerCase()%];
+	}
+				
+	public List<[%=task.type.name%]> get[%=task.type.name.firstToUpperCase()%](){
+		return [%=task.type.name.firstToLowerCase()%];
+	}
+				
+	public String getDescription(){
+		return description;
+	} 
+				
+	public String getName(){
+		return name;
+	}
+				
+	public void setName(String name) {
+		this.name = name;
+	}
+				
+	public void setDescription(String description){
+		this.description = description;
+	}
+				
+	public void set[%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToUpperCase()%](List<[%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToUpperCase()%]> [%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToLowerCase()%]){
+		this.[%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToLowerCase()%] = [%=theModel.project.tasks.at(0).actions.at(0).type.name.firstToLowerCase()%];
+	}
+				
+	public void set[%=task.has.at(0).type.name.firstToUpperCase()%](List<[%=task.has.at(0).type.name.firstToUpperCase()%]> [%=task.has.at(0).type.name.firstToLowerCase()%]){
+		this.[%=task.has.at(0).type.name.firstToLowerCase()%] = [%=task.has.at(0).type.name.firstToLowerCase()%];
+	}
+				
+	public void set[%=task.type.name.firstToUpperCase()%](List<[%=task.type.name%]> [%=task.type.name.firstToLowerCase()%]){
+		this.[%=task.type.name.firstToLowerCase()%] = [%=task.type.name.firstToLowerCase()%];
+	}
+}

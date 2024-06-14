@@ -1,0 +1,36 @@
+package prototype1.domain;
+	
+public class [%=decision.type.name%]{
+		
+	private List<[%=decision.has.at(0).type.name%]> [%=decision.has.at(0).type.name.firstToLowerCase()%];
+	private List<[%=decision.condition.at(0).type.name%]> [%=decision.condition.at(0).type.name.firstToLowerCase()%];
+		
+	public [%=decision.type.name%](List<[%=decision.has.at(0).type.name%]> [%=decision.has.at(0).type.name.firstToLowerCase()%],List<[%=decision.condition.at(0).type.name%]> [%=decision.condition.at(0).type.name.firstToLowerCase()%]){
+		this.[%=decision.has.at(0).type.name.firstToLowerCase()%] = [%=decision.has.at(0).type.name.firstToLowerCase()%];
+		this.[%=decision.condition.at(0).type.name.firstToLowerCase()%] = [%=decision.condition.at(0).type.name.firstToLowerCase()%];
+	}
+		
+	public List<[%=decision.has.at(0).type.name%]> get[%=decision.has.at(0).type.name.firstToUpperCase()%](){
+		return [%=decision.has.at(0).type.name.firstToLowerCase()%];
+	}
+		
+	public List<[%=decision.condition.at(0).type.name%]> get[%=decision.condition.at(0).type.name.firstToUpperCase()%](){
+		return [%=decision.condition.at(0).type.name.firstToLowerCase()%];
+	}
+	
+	public void set[%=decision.has.at(0).type.name.firstToUpperCase()%](List<[%=decision.has.at(0).type.name%]> [%=decision.has.at(0).type.name.firstToLowerCase()%]){
+		this.[%=decision.has.at(0).type.name.firstToLowerCase()%] = [%=decision.has.at(0).type.name.firstToLowerCase()%];
+	}
+		
+	public void set[%=decision.condition.at(0).type.name.firstToUpperCase()%](List<[%=decision.condition.at(0).type.name%]> [%=decision.condition.at(0).type.name.firstToLowerCase()%]){
+		this.[%=decision.condition.at(0).type.name.firstToLowerCase()%] = [%=decision.condition.at(0).type.name.firstToLowerCase()%];
+	}
+	
+	@Override
+	public String toString() {
+		return "Decision{" +
+				"properties=" + [%=decision.has.at(0).type.name.firstToLowerCase()%] +
+				", conditions=" + [%=decision.condition.at(0).type.name.firstToLowerCase()%] +
+				'}';
+	}
+}

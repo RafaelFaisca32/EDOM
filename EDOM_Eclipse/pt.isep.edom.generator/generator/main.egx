@@ -1,0 +1,89 @@
+pre {
+	var theModel = Model.all.first();
+}
+
+rule actionClass
+	transform action : Action {
+		template : "actionClass.egl"
+		target : "../src-gen/prototype1/domain/Action.java"
+}
+
+rule conditionClass
+	transform condition : Condition {
+		template : "conditionClass.egl"
+		target : "../src-gen/prototype1/domain/Condition.java"
+}
+
+rule projectClass
+	transform project : Project {
+		template : "projectClass.egl"
+		target : "../src-gen/prototype1/domain/Project.java"
+}
+
+rule decisionClass
+	transform decision : Decision {
+		template : "decisionClass.egl"
+		target : "../src-gen/prototype1/domain/Decision.java"
+}
+
+rule fileClass
+	transform file : File {
+		template : "fileClass.egl"
+		target : "../src-gen/prototype1/domain/File.java"
+}
+
+rule propertyClass
+	transform property : Property {
+		template : "propertyClass.egl"
+		target : "../src-gen/prototype1/domain/Property.java"
+}
+
+rule targetClass
+	transform target1 : Target {
+		template : "targetClass.egl"
+		target : "../src-gen/prototype1/domain/Target.java"
+}
+
+rule taskClass
+	transform task : Task {
+		parameters {
+			var params : new Map;
+			params.put("theModel", theModel);
+			return params;
+		}
+		template : "taskClass.egl"
+		target : "../src-gen/prototype1/domain/Task.java"
+}
+
+rule mainClass
+	transform aModel : Model {
+		parameters {
+    		var params : new Map;
+    		params.put("theModel", theModel);
+    		return params;
+  		}
+  		template : "mainClass.egl"
+		target : "../src-gen/prototype1/main.java"
+}
+
+rule mainMenuClass
+	transform aModel : Model {
+		parameters {
+			var params : new Map;
+    		params.put("theModel", theModel);
+    		return params;
+		}
+		template : "mainMenuClass.egl"
+		target : "../src-gen/prototype1/MainMenu.java"
+}
+
+rule taskMenuClass
+	transform aModel : Model {
+		parameters {
+			var params : new Map;
+    		params.put("theModel", theModel);
+    		return params;
+		}
+		template : "taskMenuClass.egl"
+		target : "../src-gen/prototype1/TaskMenu.java"
+}

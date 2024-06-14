@@ -1,0 +1,29 @@
+[% out.setContentType("Java"); %]
+package prototype1.domain;
+
+public class [%=action.type.name%] {
+		
+		private String name;
+		private List<[%=action.decisions.at(0).type.name%]> [%=action.decisions.at(0).type.name.firstToLowerCase()%];
+		
+		public [%=action.type.name%](String name,List<[%=action.decisions.at(0).type.name%]> [%=action.decisions.at(0).type.name.firstToLowerCase()%]){
+			this.name = name;
+			this.[%=action.decisions.at(0).type.name.firstToLowerCase()%] = [%=action.decisions.at(0).type.name.firstToLowerCase()%];
+		}
+				
+		public String getName(){
+			return name;
+		}
+				
+		public void setName(String name){
+			this.name = name;
+		}
+		
+		public List<[%=action.decisions.at(0).type.name%]> get[%=action.decisions.at(0).type.name.firstToUpperCase()%](){
+			return [%=action.decisions.at(0).type.name.firstToLowerCase()%];
+		}
+		
+		public void set[%=action.decisions.at(0).type.name.firstToUpperCase()%](List<[%=action.decisions.at(0).type.name%]> [%=action.decisions.at(0).type.name.firstToLowerCase()%]){
+			this.[%=action.decisions.at(0).type.name.firstToLowerCase()%] = [%=action.decisions.at(0).type.name.firstToLowerCase()%];
+		}
+}

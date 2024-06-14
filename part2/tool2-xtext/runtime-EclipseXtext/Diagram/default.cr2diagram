@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cr2="http://www.example.org/cr2" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmi:id="_1wCBAHlcEe2zALNGMiGMwQ" type="Cr2" name="default.cr2diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_3_b30HlcEe2zALNGMiGMwQ" type="2003" fontName="Segoe UI">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3_fiMHlcEe2zALNGMiGMwQ" type="5005"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3_fiMXlcEe2zALNGMiGMwQ" type="5008"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3_fiMnlcEe2zALNGMiGMwQ" type="5009"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3_fiM3lcEe2zALNGMiGMwQ" type="5010"/>
+    <element xmi:type="cr2:Comment" href="default.cr2#/1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3_b30XlcEe2zALNGMiGMwQ" x="1038" y="168"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_41YoYHlcEe2zALNGMiGMwQ" type="2002" fontName="Segoe UI">
+    <children xmi:type="notation:DecorationNode" xmi:id="_41YoYnlcEe2zALNGMiGMwQ" type="5004"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_41YoY3lcEe2zALNGMiGMwQ" type="5006"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_41YoZHlcEe2zALNGMiGMwQ" type="5007"/>
+    <element xmi:type="cr2:Review" href="default.cr2#/2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_41YoYXlcEe2zALNGMiGMwQ" x="862" y="296"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_1wCBAXlcEe2zALNGMiGMwQ"/>
+  <element xmi:type="cr2:Model" href="default.cr2#/0"/>
+</notation:Diagram>

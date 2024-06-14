@@ -1,0 +1,18 @@
+-- @atlcompiler emftvm
+-- @path M=/isep.assignment2.cr2/model/cr2.ecore
+
+module feat2uppertarget;
+
+create OUT : M from IN : M;
+
+rule feat2uppertask {
+	from
+		input : M!Target (input.name.substring(1, 1).toUpper().compareTo(input.name.substring(1, 1))<>0)
+	to 
+		saida : M!Target (
+			name <- input.name.substring(1, 1).toUpper()+input.name.substring(2, input.name.size())
+		)
+		do {
+			('Applied FeatureName2UpperCase for Target '+input.name).debug();
+		}
+}

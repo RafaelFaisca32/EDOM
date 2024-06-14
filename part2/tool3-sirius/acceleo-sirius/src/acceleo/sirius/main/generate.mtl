@@ -1,0 +1,572 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/cr2')]
+
+
+[template public generateElement(aClass : Model)]
+[comment @main/]
+
+[file (('MainMenu.java'), false, 'UTF-8')]
+package generates;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import static java.lang.System.exit;
+
+public class MainMenu {
+	
+	public static Project createProject() {
+	
+		List<Target> targetList = new ArrayList<>();
+		List<Task> taskList = new ArrayList<>();
+		List<Property> propList = new ArrayList<>();
+		List<Property> propListDecision = new ArrayList<>();
+		List<Action> actionList = new ArrayList<>();
+		List<Decision> decisionList = new ArrayList<>();
+		List<Condition> conditionList = new ArrayList<>();
+
+
+[for (t : Task | aClass.project.tasks)]
+	[for (p : Property | t.has)]
+		propList.add(new Property("[p.name/]","[p.value/]" ));
+	[/for]
+	[for (a : Action | t.actions)]
+			[for (d : Decision | a.decisions)]		
+				[for (c : Condition | d.condition)]
+				conditionList.add(new Condition("[c.value/]"));
+				[/for]
+				[for (p : Property | d.has)]
+					propListDecision.add(new Property("[p.name/]","[p.value/] "));
+				[/for]
+			decisionList.add(new Decision(propListDecision,conditionList));
+			conditionList = new ArrayList<>();
+			propListDecision = new ArrayList<>();
+			[/for]
+	actionList.add(new Action("[a.name/]",decisionList));
+	decisionList = new ArrayList<>();
+	[/for]
+taskList.add(new Task("[t.name/]","[t.description/]",propList,actionList,null));
+actionList = new ArrayList<>();
+propList = new ArrayList<>();
+actionList = new ArrayList<>();
+[/for]
+
+[for (t : Target | aClass.project.target)]
+	[for (p : Property | t.has.has)]
+		propList.add(new Property("[p.name/]","[p.value/]" ));
+	[/for]
+	[for (a : Action | t.has.actions)]
+			[for (d : Decision | a.decisions)]		
+				[for (c : Condition | d.condition)]
+				conditionList.add(new Condition("[c.value/]"));
+				[/for]
+				[for (p : Property | d.has)]
+					propListDecision.add(new Property("[p.name/]","[p.value/]" ));
+				[/for]
+			decisionList.add(new Decision(propListDecision,conditionList));
+			conditionList = new ArrayList<>();
+			propListDecision = new ArrayList<>();
+			[/for]
+	actionList.add(new Action("[a.name/]",decisionList));
+	decisionList = new ArrayList<>();
+	[/for]
+targetList.add(new Target("[t.name/]", new File("[t.input.name/]"), new File("[t.output.name/]"),new Task("[t.has.name/]","[t.has.description/]",propList,actionList,null),null));
+propList = new ArrayList<>();
+actionList = new ArrayList<>();
+[/for]
+
+Project project = new Project("[aClass.project.name/]","[aClass.project.version/]",targetList,taskList);
+		return project;
+
+	}
+		
+	public static void executeMenu(Project project) {
+		
+		boolean exit = false;
+		Scanner input = new Scanner(System.in);
+		
+		while (!exit) {
+
+			System.out.println(" # JavaBuilder ");
+			System.out.println(" Please select one option:");
+					
+			System.out.println("0 - Exit");
+			System.out.println("1 - Execute Tasks");
+					
+			String line = input.nextLine();
+			int num = Integer.valueOf(line);
+					
+			switch (num) {
+				case 0:
+					exit = true;
+					break;
+				case 1:
+					TaskMenu.executeMenu(project);
+			}
+		}
+		exit(0);
+	}
+}
+
+
+
+[/file]
+
+
+[file (('Model.java'), false, 'UTF-8')]
+package generates;
+
+public class Model {
+
+private String name;
+
+private Project Project;
+
+public Model(String name, Project Project){
+this.name = name;
+this.Project = Project;
+}
+
+public String getName() {
+       return this.name;
+     }
+
+public Project getProject() {
+       return this.Project;
+     }
+
+}
+[/file]
+
+[file (('Project.java'), false, 'UTF-8')]
+package generates;
+
+import java.util.List;
+
+public class Project{
+	
+	private String name;
+	private String version;
+	private List<Target> targets;
+	private List<Task> tasks;
+	
+	public Project(String name,String version,List<Target> targets,List<Task> tasks){
+		this.name = name;
+		this.version = version;
+		this.targets = targets;
+		this.tasks = tasks;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getVersion(){
+		return version;
+	}
+	
+	public List<Target> getTargets(){
+		return targets;
+	}
+	
+	public List<Task> getTasks(){
+		return tasks;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public void setVersion(String version){
+		this.version = version;
+	}
+	
+	public void setTargets(List<Target> targets){
+		this.targets = targets;
+	}
+	
+	public void setTask(List<Task> tasks){
+		this.tasks = tasks;
+	}
+}
+[/file]
+
+
+[file (('Action.java'), false, 'UTF-8')]
+package generates;
+
+import java.util.List;
+
+public class Action{
+	
+	private String name;
+	private List<Decision> decisions;
+	
+	public Action(String name,List<Decision> decisions){
+		this.name = name;
+		this.decisions = decisions;
+	}
+			
+	public String getName(){
+		return name;
+	}
+			
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public List<Decision> getDecisions(){
+		return decisions;
+	}
+	
+	public void setDecisions(List<Decision> decisions){
+		this.decisions = decisions;
+	}
+}
+[/file]
+
+[file (('Condition.java'), false, 'UTF-8')]
+package generates;
+
+public class Condition{
+	
+	private String value;
+	
+	public Condition(String value){
+		this.value = value;
+	}
+	
+	public String getValue(){
+		return value;
+	}
+	
+	public void setValue(String value){
+		this.value = value;
+	}
+	@Override
+	public String toString() {
+		return "Condition{" +
+				"value='" + value + '\'' +
+				'}';
+	}
+}
+[/file]
+
+[file (('Decision.java'), false, 'UTF-8')]
+package generates;
+
+import java.util.List;
+
+public class Decision {
+
+	private List<Property> properties;
+	private List<Condition> conditions;
+
+	public Decision(List<Property> properties, List<Condition> conditions) {
+		this.properties = properties;
+		this.conditions = conditions;
+	}
+
+	public List<Property> getProperties() {
+		return properties;
+	}
+
+	public List<Condition> getConditions() {
+		return conditions;
+	}
+
+	public void setProperties(List<Property> properties) {
+		this.properties = properties;
+	}
+
+	public void setConditions(List<Condition> conditions) {
+		this.conditions = conditions;
+	}
+
+	@Override
+	public String toString() {
+		return "Decision{" +
+				"properties=" + properties +
+				", conditions=" + conditions +
+				'}';
+	}
+}
+
+[/file]
+
+[file (('File.java'), false, 'UTF-8')]
+package generates;
+
+public class File{
+	
+	private String name;
+	
+	public File(String name){
+		this.name = name;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+}
+[/file]
+
+[file (('Property.java'), false, 'UTF-8')]
+package generates;
+
+public class Property{
+	
+	private String name;
+	private String value;
+	
+	public Property(String name,String value){
+		this.name = name;
+		this.value = value;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getValue(){
+		return value;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public void setValue(String value){
+		this.value = value;
+	}
+	
+	public String toString(){
+		return "Property -> Name: " + name + ", Value: " + value;
+	}
+}
+
+[/file]
+
+[file (('Target.java'), false, 'UTF-8')]
+package generates;
+
+import java.util.List;
+
+public class Target {
+	
+	private String name;
+	private Task task;
+	private File input;
+	private File output;
+	private List<Target> targets;
+	
+	public Target(String name,File input,File output,Task task,List<Target> targets){
+		this.name = name;
+		this.input = input;
+		this.output = output;
+		this.task = task;
+		this.targets = targets;
+	}
+		
+	public String getName(){
+		return name;
+	}
+	
+	public File getInput(){
+		return input;
+	} 
+		
+	public File getOutput(){
+		return output;
+	}
+	
+	public Task getTask(){
+		return task;
+	}
+	
+	public List<Target> getTargets(){
+		return targets;
+	}
+	
+	public void setName (String name){
+		this.name = name;
+	}
+	
+	public void setInput(File input){
+		this.input = input;
+	}
+	
+	public void setOutput(File output){
+		this.output = output;
+	}
+	
+	public void setTask(Task task){
+		this.task = task;
+	}
+	
+	public void setTargets(List<Target> targets){
+		this.targets = targets;
+	}
+}
+
+[/file]
+
+[file (('Task.java'), false, 'UTF-8')]
+package generates;
+
+import java.util.List;
+
+public class Task {
+		
+	private String name;
+	private String description;
+	private List<Property> properties;
+	private List<Action> actions;
+	private List<Task> tasks;
+	
+	public Task(String name,String description,List<Property> properties,List<Action> actions,List<Task> tasks){
+		this.name = name;
+		this.description = description;
+		this.properties = properties;
+		this.actions = actions;
+		this.tasks = tasks;
+	}
+		
+	public List<Action> getActions(){
+		return actions;
+	}
+			
+	public List<Property> getProperties(){
+		return properties;
+	}
+			
+	public List<Task> getTasks(){
+		return tasks;
+	}
+			
+	public String getDescription(){
+		return description;
+	} 
+			
+	public String getName(){
+		return name;
+	}
+			
+	public void setName(String name) {
+		this.name = name;
+	}
+			
+	public void setDescription(String description){
+		this.description = description;
+	}
+			
+	public void setActions(List<Action> actions){
+		this.actions = actions;
+	}
+			
+	public void setProperties(List<Property> properties){
+		this.properties = properties;
+	}
+			
+	public void setTasks(List<Task> tasks){
+		this.tasks = tasks;
+	}
+}
+
+[/file]
+
+[file (('main.java'), false, 'UTF-8')]
+package generates;
+
+public class main {
+		
+	public static void main() {
+		MainMenu.executeMenu(MainMenu.createProject());
+	}
+}
+[/file]
+
+[file (('TaskMenu.java'), false, 'UTF-8')]
+package generates;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+
+
+public class TaskMenu {
+    	
+public static void executeMenu(Project project) {
+    	
+	boolean exit = false;
+    		Scanner input = new Scanner(System.in);
+    	
+    		while (!exit) {
+    			System.out.println(" Please select one option:");
+    		
+    			System.out.println("0 - Return to main menu");
+
+				List<String> type = new ArrayList<>();
+				System.out.println("# Targets");
+				int contador;
+				int targets = project.getTargets().size();
+    			for(contador=0;contador<targets;contador++){
+    				System.out.println(contador+1 + " - " + project.getTargets().get(contador).getTask().getName());
+					type.add("Target");
+    			}
+				System.out.println("# Tasks");
+				for(int i=0;i<project.getTasks().size();i++){
+					contador++;
+					System.out.println(contador + " - " + project.getTasks().get(i).getName());
+					type.add("Task");
+				}
+    			String line = input.nextLine();
+    			int num = Integer.valueOf(line);
+    								
+    			switch (num) {
+    				case 0:
+    					MainMenu.executeMenu(project);
+    					break;
+    				default:
+						String typeSelected = type.get(num-1);
+    					if(typeSelected.equals("Task")) {
+    						System.out.println("Task "+ project.getTasks().get(num-1-targets).getName());
+							System.out.println("Task Description - " + project.getTasks().get(num-1-targets).getDescription());
+        					System.out.println("Properties " + project.getTasks().get(num-1-targets).getProperties());
+							for(Action a : project.getTasks().get(num-1-targets).getActions()){
+								System.out.println("Action " + a.getName());
+								System.out.println("Action Decisions " + a.getDecisions().toString());
+							}
+    					} else {
+							System.out.println("#Target " +  project.getTargets().get(num-1).getName());
+							System.out.println("#Input File " +  project.getTargets().get(num-1).getInput().getName());
+							System.out.println("#Output File " +  project.getTargets().get(num-1).getOutput().getName());
+        					System.out.println("#Task Name " + project.getTargets().get(num-1).getTask().getName());
+        					System.out.println("#Task Property" + project.getTargets().get(num-1).getTask().getProperties());
+    					}
+    					break;
+    			}
+    		}
+   		}
+    }
+
+
+
+[/file]
+
+
+
+
+
+  
+
+[/template]
+
+
+

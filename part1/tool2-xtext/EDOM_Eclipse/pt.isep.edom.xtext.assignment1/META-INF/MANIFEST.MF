@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: pt.isep.edom.xtext.assignment1
+Bundle-ManifestVersion: 2
+Bundle-Name: pt.isep.edom.xtext.assignment1
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: pt.isep.edom.xtext.assignment1; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: pt.isep.edom.assignment1,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: pt.isep.edom.xtext.assignment1.formatting2,
+ pt.isep.edom.xtext.assignment1.validation,
+ pt.isep.edom.xtext.assignment1.services,
+ pt.isep.edom.xtext.assignment1.serializer,
+ pt.isep.edom.xtext.assignment1.parser.antlr,
+ pt.isep.edom.xtext.assignment1.parser.antlr.internal,
+ pt.isep.edom.xtext.assignment1,
+ pt.isep.edom.xtext.assignment1.scoping,
+ pt.isep.edom.xtext.assignment1.generator
+Import-Package: org.apache.log4j

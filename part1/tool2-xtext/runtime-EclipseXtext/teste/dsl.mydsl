@@ -1,0 +1,11 @@
+Model ModelJavaBuilder {
+	project Project JavaBuilder {
+		target { 
+			Target { 
+				has Task "build classes" {
+					description "this java class is responsible of building other classes"
+				}		
+			} 
+		}
+	}
+}

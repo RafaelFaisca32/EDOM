@@ -1,0 +1,19 @@
+-- @atlcompiler emftvm
+-- @path M=/isep.assignment2.cr2/model/cr2.ecore
+
+module feat2upperproperty;
+
+
+create OUT : M from IN : M;
+
+rule feat2uppertask {
+	from
+		input : M!Property (input.name.substring(1, 1).toUpper().compareTo(input.name.substring(1, 1))<>0)
+	to 
+		saida : M!Property (
+			name <- input.name.substring(1, 1).toUpper()+input.name.substring(2, input.name.size())
+		)
+		do {
+			('Applied FeatureName2UpperCase for Propery '+input.name).debug();
+		}
+}

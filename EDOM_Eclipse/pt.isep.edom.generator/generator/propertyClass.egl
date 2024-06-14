@@ -1,0 +1,32 @@
+package prototype1.domain;
+	
+public class [%=property.type.name%]{
+		
+	private String name;
+	private String value;
+		
+	public [%=property.type.name%](String name,String value){
+		this.name = name;
+		this.value = value;
+	}
+		
+	public String getName(){
+		return name;
+	}
+		
+	public String getValue(){
+		return value;
+	}
+		
+	public void setName(String name){
+		this.name = name;
+	}
+		
+	public void setValue(String value){
+		this.value = value;
+	}
+		
+	public String toString(){
+		return "Property -> Name: " + name + ", Value: " + value;
+	}
+}

@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="sirius" version="12.0.0.2017041100">
+  <ownedViewpoints name="MyViewpoint">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramOfProject" domainClass="cr2::Model" enablePopupBars="true">
+      <metamodel href="http://www.example.org/cr2#/"/>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="ProjectNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Model">
+          <audits auditExpression="aql:self.project->select(p | p.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="ProjectVersionNotEmpty" level="ERROR" message="The Project version can't be null or empty" targetClass="cr2::Model">
+          <audits auditExpression="aql:self.project->select(p | p.version=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskMustBeUnique" level="ERROR" message="The tasks name must be unique." targetClass="cr2::Project">
+          <audits auditExpression="aql: self.task->isUnique(select(t |t.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Project">
+          <audits auditExpression="aql:self.task->select(t | t.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="Generate" message="GeneratePuml" targetClass="cr2::Model">
+          <fixes name="generatePuml">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: generatePuml()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNotStartWithUppercase" message="The task does not start with uppercase" targetClass="cr2::Project">
+          <audits auditExpression="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0"/>
+          <fixes name="SetNameToUpperCase">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: taskNameToUppercase()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <edgeMappings name="ProjectDirectionTask" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTask']" targetFinderExpression="feature:tasks">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ProjectDirectionTarget" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfProject']/@defaultLayer/@containerMappings[name='ContainerProject']/@subNodeMappings[name='NodeTarget']" targetFinderExpression="feature:target">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ContainerProject" semanticCandidatesExpression="feature:project" domainClass="cr2::Project" childrenPresentation="List">
+          <subNodeMappings name="NodeTarget" semanticCandidatesExpression="feature:target" domainClass="cr2::Target">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="NodeTask" semanticCandidatesExpression="feature:tasks" domainClass="cr2::Task">
+            <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:PopupMenu" name="My Menu">
+            <menuItemDescription xsi:type="tool:OperationAction" name="CallGeneratePlantuml">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext">
+                  <subModelOperations xsi:type="tool:Let" valueExpression="service: generatePlantuml()"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramOfTarget" domainClass="cr2::Project" enablePopupBars="true">
+      <metamodel href="http://www.example.org/cr2#/"/>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="FileNameNotEmpty" level="ERROR" message="The file name can't be null or empty." targetClass="cr2::Target">
+          <audits auditExpression="aql:self.file->select(f | f.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskMustBeUnique" level="ERROR" message="The tasks name must be unique." targetClass="cr2::Target">
+          <audits auditExpression="aql: self.task->isUnique(select(t |t.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Target">
+          <audits auditExpression="aql:self.task->select(t | t.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNotStartWithUppercase" message="The task does not start with uppercase" targetClass="cr2::Target">
+          <audits auditExpression="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0"/>
+          <fixes name="SetNameToUpperCase">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: taskNameToUppercase1()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TargetNotStartWithUppercase" message="The target does not start with uppercase" targetClass="cr2::Project">
+          <audits auditExpression="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0"/>
+          <fixes name="SetNameToUpperCase">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: targetNameToUppercase()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default1">
+        <edgeMappings name="TargetDirectionInput" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfTarget']/@defaultLayer/@containerMappings[name='ContainerTarget']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfTarget']/@defaultLayer/@containerMappings[name='ContainerTarget']/@subNodeMappings[name='NodeFileInput']" targetFinderExpression="feature:input">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TargetDirectionOutput" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfTarget']/@defaultLayer/@containerMappings[name='ContainerTarget']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfTarget']/@defaultLayer/@containerMappings[name='ContainerTarget']/@subNodeMappings[name='NodeFileOutput']" targetFinderExpression="feature:output">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TargetDirectionTask" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfTarget']/@defaultLayer/@containerMappings[name='ContainerTarget']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfTarget']/@defaultLayer/@containerMappings[name='ContainerTarget']/@subNodeMappings[name='NodeTask']" targetFinderExpression="feature:has">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ContainerTarget" semanticCandidatesExpression="feature:target" domainClass="cr2::Target">
+          <subNodeMappings name="NodeFileInput" semanticCandidatesExpression="feature:input" domainClass="cr2::File">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="NodeTask" semanticCandidatesExpression="feature:has" domainClass="cr2::Task">
+            <borderedNodeMappings name="NodeTask" semanticCandidatesExpression="feature:has" domainClass="cr2::Task"/>
+            <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="NodeFileOutput" semanticCandidatesExpression="feature:output" domainClass="cr2::File">
+            <style xsi:type="style:EllipseNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramTask" domainClass="cr2::Project" enablePopupBars="true">
+      <metamodel href="http://www.example.org/cr2#/"/>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskMustBeUnique" level="ERROR" message="The tasks name must be unique." targetClass="cr2::Project">
+          <audits auditExpression="aql: self.task->isUnique(select(t |t.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Project">
+          <audits auditExpression="aql:self.task->select(t | t.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyMustBeUnique" level="ERROR" message="The property name must be unique." targetClass="cr2::Task">
+          <audits auditExpression="aql: self.property->isUnique(select(p |p.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyNameNotEmpty" level="ERROR" message="The property name can't be null or empty." targetClass="cr2::Task">
+          <audits auditExpression="aql:self.property->select(p | p.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyValueNotEmpty" level="ERROR" message="The property value can't be null or empty." targetClass="cr2::Task">
+          <audits auditExpression="aql:self.property->select(p | p.value = null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNotStartWithUppercase" message="The task does not start with uppercase" targetClass="cr2::Project">
+          <audits auditExpression="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0"/>
+          <fixes name="SetNameToUpperCase">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: taskNameToUppercase()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyNotStartWithUppercase" message="The property does not start with uppercase" targetClass="cr2::Task">
+          <audits auditExpression="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0"/>
+          <fixes name="SetNameToUpperCase">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: propertyNameToUppercase()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default2">
+        <edgeMappings name="TaskDirectionAction" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramTask']/@defaultLayer/@containerMappings[name='ContainerTask']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramTask']/@defaultLayer/@containerMappings[name='ContainerTask']/@subNodeMappings[name='NodeAction']" targetFinderExpression="feature:actions">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TaskDirectionProperty" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramTask']/@defaultLayer/@containerMappings[name='ContainerTask']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramTask']/@defaultLayer/@containerMappings[name='ContainerTask']/@subNodeMappings[name='NodeProperty']" targetFinderExpression="feature:input">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ContainerTask" semanticCandidatesExpression="feature:tasks" domainClass="cr2::Task">
+          <subNodeMappings name="NodeAction" semanticCandidatesExpression="feature:actions" domainClass="cr2::Action">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="NodeProperty" semanticCandidatesExpression="feature:has" domainClass="cr2::Property">
+            <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramOfAction" domainClass="cr2::Task" enablePopupBars="true">
+      <metamodel href="http://www.example.org/cr2#/"/>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyMustBeUnique" level="ERROR" message="The property name must be unique." targetClass="cr2::Decision">
+          <audits auditExpression="aql: self.property->isUnique(select(p |p.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyNameNotEmpty" level="ERROR" message="The property name can't be null or empty." targetClass="cr2::Decision">
+          <audits auditExpression="aql:self.property->select(p | p.name = null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyValueNotEmpty" level="ERROR" message="The property value can't be null or empty." targetClass="cr2::Decision">
+          <audits auditExpression="aql:self.property->select(p | p.value = null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyNotStartWithUppercase" message="The property does not start with uppercase" targetClass="cr2::Decision">
+          <audits auditExpression="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0"/>
+          <fixes name="SetNameToUpperCase">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: propertyNameToUppercase1()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default4">
+        <edgeMappings name="ActionDirectionDecision" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfAction']/@defaultLayer/@containerMappings[name='ContainerAction']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfAction']/@defaultLayer/@containerMappings[name='ContainerAction']/@subContainerMappings[name='ContainerDecision']" targetFinderExpression="feature:decisions">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="DecisionDirectionCondition" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfAction']/@defaultLayer/@containerMappings[name='ContainerAction']/@subContainerMappings[name='ContainerDecision']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfAction']/@defaultLayer/@edgeMappings[name='DecisionDirectionProperty']" targetFinderExpression="feature:has">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="DecisionDirectionProperty" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfAction']/@defaultLayer/@containerMappings[name='ContainerAction']/@subContainerMappings[name='ContainerDecision']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramOfAction']/@defaultLayer/@containerMappings[name='ContainerAction']/@subContainerMappings[name='ContainerDecision']/@subNodeMappings[name='NodeProperty2']" targetFinderExpression="feature:actions">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ContainerAction" semanticCandidatesExpression="feature:actions" domainClass="cr2::Action">
+          <subContainerMappings name="ContainerDecision" semanticCandidatesExpression="feature:decisions" domainClass="cr2::Decision">
+            <subNodeMappings name="NodeProperty2" semanticCandidatesExpression="feature:has" domainClass="cr2::Property">
+              <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="NodeCondition" semanticCandidatesExpression="feature:condition" domainClass="cr2::Condition">
+              <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:eClass">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramGeneral" domainClass="cr2::Model" enablePopupBars="true">
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="ProjectNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Model">
+          <audits auditExpression="aql:self.project->select(p | p.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="ProjectVersionNotEmpty" level="ERROR" message="The Project version can't be null or empty" targetClass="cr2::Model">
+          <audits auditExpression="aql:self.project->select(p | p.version=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskMustBeUnique" level="ERROR" message="The tasks name must be unique." targetClass="cr2::Project">
+          <audits auditExpression="aql: self.task->isUnique(select(t |t.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Project">
+          <audits auditExpression="aql:self.task->select(t | t.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="Generate" message="GeneratePuml" targetClass="cr2::Model">
+          <fixes name="generatePuml">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: generatePuml()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNotStartWithUppercase" message="The task does not start with uppercase" targetClass="cr2::Project">
+          <audits auditExpression="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0"/>
+          <fixes name="SetNameToUpperCase">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: taskNameToUppercase()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TargetNotStartWithUppercase" message="The target does not start with uppercase" targetClass="cr2::Project">
+          <audits auditExpression="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0"/>
+          <fixes name="SetNameToUpperCase">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: targetNameToUppercase()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyNameNotEmpty" level="ERROR" message="The property name can't be null or empty." targetClass="cr2::Task">
+          <audits auditExpression="aql:self.property->select(p | p.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyValueNotEmpty" level="ERROR" message="The property value can't be null or empty." targetClass="cr2::Task">
+          <audits auditExpression="aql:self.property->select(p | p.value = null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyNotStartWithUppercase" message="The property does not start with uppercase" targetClass="cr2::Task">
+          <audits auditExpression="self.name.substring(1,1).toUpper().compareTo(self.name.substring(1,1))=0"/>
+          <fixes name="SetNameToUpperCase">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: propertyNameToUppercase()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <nodeMappings name="ProjectNode" domainClass="cr2::Project">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="TaskNode" domainClass="cr2::Task">
+          <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="TargetNode" domainClass="cr2::Target">
+          <style xsi:type="style:EllipseNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="InputFileNode" domainClass="cr2::File">
+          <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="OutputFileNode" domainClass="cr2::File">
+          <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="PropertyNode" domainClass="cr2::Property">
+          <style xsi:type="style:EllipseNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ActionNode" domainClass="cr2::Action">
+          <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="DecisionNode" domainClass="cr2::Decision">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ConditionNode" domainClass="cr2::Condition">
+          <style xsi:type="style:DotDescription" labelSize="12" labelExpression="" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ProjectToTask" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='ProjectNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='TaskNode']" targetFinderExpression="feature:tasks">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ProjectToTarget" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='ProjectNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='TargetNode']" targetFinderExpression="feature:target">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TargetToTask" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='TargetNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='TaskNode']" targetFinderExpression="feature:has">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TargetToInputFile" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='TargetNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='InputFileNode']" targetFinderExpression="feature:input">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TaskToProperty" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='TaskNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='PropertyNode']" targetFinderExpression="feature:has">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TaskToAction" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='TaskNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='ActionNode']" targetFinderExpression="feature:actions">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ActionToDecision" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='ActionNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='DecisionNode']" targetFinderExpression="feature:decisions">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="DecisionToProperty" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='DecisionNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='PropertyNode']" targetFinderExpression="feature:has">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="DecisionToCondition" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='DecisionNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='ConditionNode']" targetFinderExpression="feature:condition">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TargetToOutputFile" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='TargetNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DiagramGeneral']/@defaultLayer/@nodeMappings[name='OutputFileNode']" targetFinderExpression="feature:output">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="my.project.design.sirius.Services"/>
+  </ownedViewpoints>
+</description:Group>

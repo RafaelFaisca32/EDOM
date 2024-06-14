@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="sirius" version="12.0.0.2017041100">
+  <ownedViewpoints name="MyViewpoint">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramOfProject" domainClass="cr2::Model" enablePopupBars="true">
+      <metamodel href="http://www.example.org/cr2#/"/>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="ProjectNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Model">
+          <audits auditExpression="aql:self.project->select(p | p.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="ProjectVersionNotEmpty" level="ERROR" message="The Project version can't be null or empty" targetClass="cr2::Model">
+          <audits auditExpression="aql:self.project->select(p | p.version=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskMustBeUnique" level="ERROR" message="The tasks name must be unique." targetClass="cr2::Project">
+          <audits auditExpression="aql: self.task->isUnique(select(t |t.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Project">
+          <audits auditExpression="aql:self.task->select(t | t.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="Generate" message="GeneratePuml" targetClass="cr2::Model">
+          <fixes name="generatePuml">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" valueExpression="service: generatePuml()"/>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <containerMappings name="ContainerProject" semanticCandidatesExpression="feature:project" domainClass="cr2::Project" childrenPresentation="List">
+          <subNodeMappings name="NodeTarget" semanticCandidatesExpression="feature:target" domainClass="cr2::Target">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="feature:eClass" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="NodeTask" semanticCandidatesExpression="feature:tasks" domainClass="cr2::Task">
+            <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:PopupMenu" name="My Menu">
+            <menuItemDescription xsi:type="tool:OperationAction" name="CallGeneratePlantuml">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext">
+                  <subModelOperations xsi:type="tool:Let" valueExpression="service: generatePlantuml()"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramOfTarget" domainClass="cr2::Project" enablePopupBars="true">
+      <metamodel href="http://www.example.org/cr2#/"/>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="FileNameNotEmpty" level="ERROR" message="The file name can't be null or empty." targetClass="cr2::Target">
+          <audits auditExpression="aql:self.file->select(f | f.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskMustBeUnique" level="ERROR" message="The tasks name must be unique." targetClass="cr2::Target">
+          <audits auditExpression="aql: self.task->isUnique(select(t |t.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Target">
+          <audits auditExpression="aql:self.task->select(t | t.name=null)->isEmpty()"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default1">
+        <containerMappings name="ContainerTarget" semanticCandidatesExpression="feature:target" domainClass="cr2::Target">
+          <subNodeMappings name="NodeFile" semanticCandidatesExpression="feature:output" domainClass="cr2::File">
+            <borderedNodeMappings name="BorderFileTarget" semanticCandidatesExpression="feature:name" domainClass="cr2::FileTarget">
+              <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="NodeTask" semanticCandidatesExpression="feature:has" domainClass="cr2::Task">
+            <borderedNodeMappings name="NodeTask" semanticCandidatesExpression="feature:has" domainClass="cr2::Task"/>
+            <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:eClass">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramTask" domainClass="cr2::Project" enablePopupBars="true">
+      <metamodel href="http://www.example.org/cr2#/"/>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskMustBeUnique" level="ERROR" message="The tasks name must be unique." targetClass="cr2::Project">
+          <audits auditExpression="aql: self.task->isUnique(select(t |t.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="TaskNameNotEmpty" level="ERROR" message="The Project name can't be null or empty." targetClass="cr2::Project">
+          <audits auditExpression="aql:self.task->select(t | t.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyMustBeUnique" level="ERROR" message="The property name must be unique." targetClass="cr2::Task">
+          <audits auditExpression="aql: self.property->isUnique(select(p |p.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyNameNotEmpty" level="ERROR" message="The property name can't be null or empty." targetClass="cr2::Task">
+          <audits auditExpression="aql:self.property->select(p | p.name=null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyValueNotEmpty" level="ERROR" message="The property value can't be null or empty." targetClass="cr2::Task">
+          <audits auditExpression="aql:self.property->select(p | p.value = null)->isEmpty()"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default2">
+        <containerMappings name="ContainerTask" semanticCandidatesExpression="feature:tasks" domainClass="cr2::Task">
+          <subNodeMappings name="NodeAction" semanticCandidatesExpression="feature:actions" domainClass="cr2::Action">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="NodeProperty" semanticCandidatesExpression="feature:has" domainClass="cr2::Property">
+            <style xsi:type="style:DotDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramOfAction" domainClass="cr2::Task" enablePopupBars="true">
+      <metamodel href="http://www.example.org/cr2#/"/>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyMustBeUnique" level="ERROR" message="The property name must be unique." targetClass="cr2::Decision">
+          <audits auditExpression="aql: self.property->isUnique(select(p |p.name))"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyNameNotEmpty" level="ERROR" message="The property name can't be null or empty." targetClass="cr2::Decision">
+          <audits auditExpression="aql:self.property->select(p | p.name = null)->isEmpty()"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="PropertyValueNotEmpty" level="ERROR" message="The property value can't be null or empty." targetClass="cr2::Decision">
+          <audits auditExpression="aql:self.property->select(p | p.value = null)->isEmpty()"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default4">
+        <containerMappings name="ContainerAction" semanticCandidatesExpression="feature:actions" domainClass="cr2::Action">
+          <subContainerMappings name="ContainerIntructionBlock" semanticCandidatesExpression="feature:has" domainClass="cr2::InstructionBlock">
+            <subNodeMappings name="NodeInstruction" semanticCandidatesExpression="feature:has" domainClass="cr2::Instruction">
+              <style xsi:type="style:EllipseNodeDescription" labelSize="12" labelExpression="feature:eClass" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:eClass">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="ContainerDecision" semanticCandidatesExpression="feature:decisions" domainClass="cr2::Decision">
+            <subNodeMappings name="NodeProperty2" semanticCandidatesExpression="feature:has" domainClass="cr2::Property">
+              <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="feature:eClass">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="my.project.design.sirius.Services"/>
+  </ownedViewpoints>
+</description:Group>

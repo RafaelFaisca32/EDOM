@@ -1,0 +1,58 @@
+package prototype1.domain;
+		
+public class [%=target1.type.name%] {
+			
+	private String name;
+	private [%=target1.has.type.name%] [%=target1.has.type.name.firstToLowerCase()%];
+	private [%=target1.input.type.name%] input;
+	private [%=target1.input.type.name%] output;
+	private List<[%=target1.type.name%]> [%=target1.type.name.firstToLowerCase()%];
+			
+	public [%=target1.type.name%](String name,[%=target1.input.type.name%] input,[%=target1.input.type.name%] output,[%=target1.has.type.name.firstToUpperCase()%] [%=target1.has.type.name.firstToLowerCase()%],List<[%=target1.type.name.firstToUpperCase()%]> [%=target1.type.name.firstToLowerCase()%]){
+		this.name = name;
+		this.input = input;
+		this.output = output;
+		this.[%=target1.has.type.name.firstToLowerCase()%] = [%=target1.has.type.name.firstToLowerCase()%];
+		this.[%=target1.type.name.firstToLowerCase()%] = [%=target1.type.name.firstToLowerCase()%];
+	}
+				
+	public String getName(){
+		return name;
+	}
+			
+	public [%=target1.input.type.name%] getInput(){
+		return input;
+	} 
+				
+	public [%=target1.input.type.name%] getOutput(){
+		return output;
+	}
+			
+	public [%=target1.has.type.name%] get[%=target1.has.type.name.firstToUpperCase()%](){
+		return [%=target1.has.type.name.firstToLowerCase()%];
+	}
+			
+	public List<[%=target1.type.name%]> get[%=target1.type.name.firstToUpperCase()%](){
+		return [%=target1.type.name.firstToLowerCase()%];
+	}
+			
+	public void setName (String name){
+		this.name = name;
+	}
+			
+	public void setInput([%=target1.input.type.name%] input){
+		this.input = input;
+	}
+			
+	public void setOutput([%=target1.input.type.name%] output){
+		this.output = output;
+	}
+			
+	public void set[%=target1.has.type.name.firstToUpperCase()%]([%=target1.has.type.name.firstToUpperCase()%] [%=target1.has.type.name.firstToLowerCase()%]){
+		this.[%=target1.has.type.name.firstToLowerCase()%] = [%=target1.has.type.name.firstToLowerCase()%];
+	}
+			
+	public void set[%=target1.type.name.firstToUpperCase()%](List<[%=target1.type.name.firstToUpperCase()%]> [%=target1.type.name.firstToLowerCase()%]){
+		this.[%=target1.type.name.firstToLowerCase()%] = [%=target1.type.name.firstToLowerCase()%];
+	}
+}

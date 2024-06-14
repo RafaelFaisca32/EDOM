@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: pt.isep.edom.xtext.assignment1.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: pt.isep.edom.xtext.assignment1.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: pt.isep.edom.xtext.assignment1.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: pt.isep.edom.xtext.assignment1,
+ pt.isep.edom.assignment1,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: pt.isep.edom.xtext.assignment1.ide.contentassist.antlr,
+ pt.isep.edom.xtext.assignment1.ide.contentassist.antlr.internal

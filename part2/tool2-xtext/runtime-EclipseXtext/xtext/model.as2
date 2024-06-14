@@ -1,0 +1,22 @@
+Model "Amazon" {
+	subject Subject "Product" {
+		feature {
+			Feature "Price1",
+			Feature "Price"
+		}
+		userfeedback {
+			Review "Review2" {
+				gradeType CUSTOM
+			},reply moderation Comment "Ola" {
+				moderationprocess ModerationProcess "Ola" {
+					startStep "start" step {
+						End "fim" ,
+						Automatic "ola" {
+							nextReject ola nextApprove ola
+						}
+					}
+				}
+			}
+		}
+	}
+}

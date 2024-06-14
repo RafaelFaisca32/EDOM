@@ -1,0 +1,20 @@
+-- @atlcompiler emftvm
+-- @path M=/pt.isep.edom.assignment1/model/assignment1.ecore
+
+module feat2uppertask;
+create OUT : M from IN : M;
+
+rule feat2uppertask {
+	from
+		input : M!Task (input.name.substring(1, 1).toUpper().compareTo(input.name.substring(1, 1))<>0)
+	to 
+		saida : M!Task (
+			name <- input.name.substring(1, 1).toUpper()+input.name.substring(2, input.name.size())
+		)
+		do {
+			('Applied FeatureName2UpperCase for Task '+input.name).debug();
+		}
+}
+
+
+
